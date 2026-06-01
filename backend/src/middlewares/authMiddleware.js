@@ -2,16 +2,20 @@ import jwt from 'jsonwebtoken';
 
 export const authMiddleware = (req, res, next) => {
     try {
-        const authHeader = req.headers.authorization;
+        // Pega token do header "Authorization: Bearer <token>"
+        const authHeader = req.headers.authorization; 
 
         if (!authHeader) {
             return res.status(401).json({ mensagem: "Token de autentização não fornecido" });
         }
 
+        // Separa "Bearer" do token
         const [, token] = authHeader.split(' ');
 
-        const decoded = jwt.verufy(token, process.env.JWT_SECRET);
+        // Verifica e decodifica o token
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
+        // Dados decodificados para o controller
         req.usuario = decoded;
 
         next();
