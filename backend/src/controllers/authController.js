@@ -8,7 +8,7 @@ export const authController = {
         try {
             const resultado = await authService.criarUsuario(req.body);
 
-            return res.status(201).json(result);
+            return res.status(201).json(resultado);
 
         } catch (error) {
             return res.status(400).json({ mensagem: error.message });
