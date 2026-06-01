@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS usuario_herois (
     usuario_id INT NOT NULL,
     heroi_api_id VARCHAR(255) NOT NULL,
     nome_heroi VARCHAR(255) NOT NULL,
+    xp_heroi INT NOT NULL DEFAULT 0,
     imagem_heroi VARCHAR(255) NOT NULL,
     adquirido_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
