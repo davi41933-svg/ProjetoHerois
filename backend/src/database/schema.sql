@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS guildas (
     usuario_id INT NOT NULL,
     nome VARCHAR(100) NOT NULL,
     elemento ENUM('normal','fogo','agua','natureza','luz','trevas','lendario','atemporal') NOT NULL DEFAULT 'normal',
+    descanso_ate DATETIME DEFAULT NULL,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );

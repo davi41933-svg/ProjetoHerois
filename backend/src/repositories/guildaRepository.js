@@ -75,5 +75,15 @@ export const guildaRepository = {
             ,`, [id]);
 
         return resultado[0] || null;
+    },
+
+    async setDescando(guildaId, descansoAte) {
+        const [resultado] = await pool.query(`
+            UPDATE guildas
+            SET descanso_ate = ?
+            WHERE id = ?
+            `, [descansoAte, guildaId]);
+
+        return resultado.affectedRows;
     }
 };
