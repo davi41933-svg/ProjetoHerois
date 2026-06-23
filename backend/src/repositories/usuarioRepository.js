@@ -30,5 +30,25 @@ export const usuarioRepository = {
             `, [nome, email, senhaHash]);
 
         return resultado.insertId;
+    },
+
+    async atualizarMoedas(id, novasMoedas) {
+        const [resultado] = await pool.query(`
+            UPDATE usuarios
+            SET moedas = ?
+            WHERE id = ?
+            `, [novasMoedas, id]);
+
+        return resultado.affectedRows;
+    },
+
+    async atualizarXpNivel(id, xp, nivel) {
+        const [resultado] = await pool.query(`
+            UPDATE usuarios
+            SET xp = ?, nivel = ?
+            WHERE id = ?
+            `, [xp, nivel, id]);
+        
+        return resultado.affectedRows;
     }
 }
