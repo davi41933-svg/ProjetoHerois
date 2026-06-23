@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS cache_herois (
     intelligence INT,
     strength INT,
     speed INT,
-    durability INT,
+    `durability` INT,
     power_stat INT,
     combat INT,
     atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
