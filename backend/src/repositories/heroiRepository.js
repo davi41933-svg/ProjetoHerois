@@ -101,20 +101,5 @@ export const heroiRepository = {
         `, [usuarioId, tipoBoost]);
 
         return rows[0]?.nivel_boost || 0;
-    },
-
-    
-    async buscarNivelCaixa(usuarioId, nomeCaixa) {
-        const [rows] = await pool.query(`
-            SELECT ui.nivel_boost
-            FROM usuario_itens ui
-            JOIN itens_loja il ON ui.item_id = il.id
-            JOIN JSON_UNQUOTE(JSON_EXTRACT(il.dados_extra, '$.tipo_caixa')) as tc
-            WHERE ui.usuario_id = ?
-            AND il.tipo = 'caixa'
-            AND JSON_UNQUOTE(JSON_EXTRACT(il.dados_extra, '$.tipo_caixa')) = ?
-        `, [usuarioId, nomeCaixa]);
-
-        return rows[0]?.nivel_boost || 0;
     }
 };

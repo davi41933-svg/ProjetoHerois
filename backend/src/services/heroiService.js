@@ -1,6 +1,8 @@
 import { heroiRepository } from '../repositories/heroiRepository.js';
 import { usuarioRepository } from '../repositories/usuarioRepository.js';
 import { criarErro } from '../utils/criarErro.js';
+import { calcularNivelHeroi, calcularNivelRecrutador } from '../utils/niveis.js';
+import { sortearElemento, sortearClasse } from '../utils/constantes.js';
 
 // Elementos e classes possíveis
 const ELEMENTOS = ['fogo', 'agua', 'natureza', 'luz', 'trevas', 'lendario', 'atemporal'];
@@ -68,29 +70,6 @@ function gerarPoderBase(raridade) {
     return Math.floor(Math.random() * (faixa.max - faixa.min + 1)) + faixa.min;
 }
 
-function calcularNivelHeroi(xpAtual, nivelAtual) {
-    let nivel = nivelAtual;
-    let xp = xpAtual;
-
-    while (xp >= nivel * 50) {
-        xp -= nivel * 50;
-        nivel++;
-    }
-
-    return { nivel, xp };
-}
-
-function calcularNivelRecrutador(xpAtual, nivelAtual) {
-    let nivel = nivelAtual;
-    let xp = xpAtual;
-
-    while (xp >= nivel * 100) {
-        xp -= nivel * 100;
-        nivel++;
-    }
-
-    return { nivel, xp };
-}
 
 // ===== Service =====
 
