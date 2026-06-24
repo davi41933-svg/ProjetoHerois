@@ -50,5 +50,16 @@ export const usuarioRepository = {
             `, [xp, nivel, id]);
         
         return resultado.affectedRows;
+    },
+
+
+    async atualizarCaixa(id, caixaAtual) {
+        const [resultado] = await pool.query(`
+            UPDATE usuarios
+            SET caixa_atual = ?
+            WHERE id = ?
+        `, [caixaAtual, id]);
+        
+        return resultado.affectedRows;
     }
 }
