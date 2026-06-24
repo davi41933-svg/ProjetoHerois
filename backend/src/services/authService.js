@@ -68,5 +68,23 @@ export const authService = {
                 caixa_atual: usuario.caixa_atual
             }
         };
+    },
+
+    async atualizarNome(usuarioId, nome) {
+        await usuarioRepository.atualizarNome(usuarioId, nome);
+
+        // Easter egg
+        if (nome === 'REAL_DEV') {
+            await usuarioRepository.atualizarCaixa(usuarioId, 'dev');
+            return { nome, caixa_atual: 'dev', easterEgg: true };
+        }
+
+        // Se mudar o nome para outra coisa, volta para madeira
+        const usuario = await usuarioRepository.buscarPorId(usuarioId);
+        if (usuario.caixa_atual === 'dev' && nome !== 'dev') {
+            await usuarioRepository.atualizarCaixa(usuarioId, 'madeira');
+        }
+
+        return { nome, caixa_atual: usuario.caixa_atual, easterEgg: false };
     }
 };
