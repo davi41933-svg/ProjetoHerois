@@ -57,11 +57,11 @@ function sortearRaridade(caixa) {
     return Object.keys(probabilidades)[0];
 }
 
-function sortearElemento() {
+function girarElemento() {
     return ELEMENTOS[Math.floor(Math.random() * ELEMENTOS.length)];
 }
 
-function sortearClasse() {
+function girarClasse() {
     return CLASSES[Math.floor(Math.random() * CLASSES.length)];
 }
 
@@ -103,8 +103,8 @@ export const heroiService = {
 
         for (const heroiApi of heroisApi) {
             const raridade = sortearRaridade(usuario.caixa_atual);
-            const elemento = sortearElemento();
-            const classe = sortearClasse();
+            const elemento = girarElemento();
+            const classe = girarClasse();
             const poderBase = gerarPoderBase(raridade);
 
             const heroiExistente = await heroiRepository.buscarHeroiDoUsuario(

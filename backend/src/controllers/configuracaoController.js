@@ -1,6 +1,6 @@
-import { configService } from '../services/configService.js';
+import { configuracaoService } from '../services/configuracaoService.js';
 
-export const configController = {
+export const configuracaoController = {
 
     async buscarPerfil(req, res) {
         try {
