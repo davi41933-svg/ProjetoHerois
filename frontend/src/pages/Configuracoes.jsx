@@ -5,6 +5,7 @@ import useAuth from '../hooks/useAuth';
 import Input from '../components/ui/Input';
 import Botao from '../components/ui/Botao';
 import { nomeEmailSchema, senhaSchema } from '../schemas/configuracaoSchema';
+import PageContainer from '../components/ui/PageContainer';
 
 export default function Configuracoes() {
     const { usuario, atualizarUsuario, logout } = useAuth();
@@ -112,104 +113,106 @@ export default function Configuracoes() {
     }
 
     return (
-        <div className="max-w-2xl">
-            <h1 className="font-display font-bold text-3xl text-text-primary mb-8">
-                Configurações
-            </h1>
+        <PageContainer>
+            <div className="max-w-2xl">
+                <h1 className="font-display font-bold text-3xl text-text-primary mb-8">
+                    Configurações
+                </h1>
 
-            {/* Perfil */}
-            <section className="bg-surface rounded-xl p-6 border border-text-muted/10 mb-6">
-                <h2 className="font-bold text-xl text-text-primary mb-4">
-                    Dados do Perfil
-                </h2>
+                {/* Perfil */}
+                <section className="bg-surface rounded-xl p-6 border border-text-muted/10 mb-6">
+                    <h2 className="font-bold text-xl text-text-primary mb-4">
+                        Dados do Perfil
+                    </h2>
 
-                <form onSubmit={handleAtualizarPerfil} className="flex flex-col gap-4">
-                    <Input
-                        label="Nome"
-                        value={nome}
-                        onChange={(e) => setNome(e.target.value)}
-                        error={errosPerfil.nome}
-                    />
-                    <Input
-                        label="Email"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        error={errosPerfil.email}
-                    />
-                    {errosPerfil.geral && <p className="text-danger text-sm">{errosPerfil.geral}</p>}
-                    {sucessoPerfil && <p className="text-elemento-natureza text-sm">{sucessoPerfil}</p>}
+                    <form onSubmit={handleAtualizarPerfil} className="flex flex-col gap-4">
+                        <Input
+                            label="Nome"
+                            value={nome}
+                            onChange={(e) => setNome(e.target.value)}
+                            error={errosPerfil.nome}
+                        />
+                        <Input
+                            label="Email"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            error={errosPerfil.email}
+                        />
+                        {errosPerfil.geral && <p className="text-danger text-sm">{errosPerfil.geral}</p>}
+                        {sucessoPerfil && <p className="text-elemento-natureza text-sm">{sucessoPerfil}</p>}
 
-                    <Botao tipo="submit" desabilitado={nomeEmailMutation.isPending}>
-                        {nomeEmailMutation.isPending ? 'Salvando...' : 'Salvar Alterações'}
-                    </Botao>
-                </form>
-            </section>
+                        <Botao tipo="submit" desabilitado={nomeEmailMutation.isPending}>
+                            {nomeEmailMutation.isPending ? 'Salvando...' : 'Salvar Alterações'}
+                        </Botao>
+                    </form>
+                </section>
 
-            {/* Senha */}
-            <section className="bg-surface rounded-xl p-6 border border-text-muted/10 mb-6">
-                <h2 className="font-bold text-xl text-text-primary mb-4">
-                    Alterar Senha
-                </h2>
+                {/* Senha */}
+                <section className="bg-surface rounded-xl p-6 border border-text-muted/10 mb-6">
+                    <h2 className="font-bold text-xl text-text-primary mb-4">
+                        Alterar Senha
+                    </h2>
 
-                <form onSubmit={handleAtualizarSenha} className="flex flex-col gap-4">
-                    <Input
-                        label="Senha Atual"
-                        type="password"
-                        value={senhaAtual}
-                        onChange={(e) => setSenhaAtual(e.target.value)}
-                        error={errosSenha.senhaAtual}
-                    />
-                    <Input
-                        label="Nova Senha"
-                        type="password"
-                        value={novaSenha}
-                        onChange={(e) => setNovaSenha(e.target.value)}
-                        error={errosSenha.novaSenha}
-                    />
-                    <Input
-                        label="Confirmar Nova Senha"
-                        type="password"
-                        value={confirmarSenha}
-                        onChange={(e) => setConfirmarSenha(e.target.value)}
-                        error={errosSenha.confirmarSenha}
-                    />
-                    {errosSenha.geral && <p className="text-danger text-sm">{errosSenha.geral}</p>}
-                    {sucessoSenha && <p className="text-elemento-natureza text-sm">{sucessoSenha}</p>}
+                    <form onSubmit={handleAtualizarSenha} className="flex flex-col gap-4">
+                        <Input
+                            label="Senha Atual"
+                            type="password"
+                            value={senhaAtual}
+                            onChange={(e) => setSenhaAtual(e.target.value)}
+                            error={errosSenha.senhaAtual}
+                        />
+                        <Input
+                            label="Nova Senha"
+                            type="password"
+                            value={novaSenha}
+                            onChange={(e) => setNovaSenha(e.target.value)}
+                            error={errosSenha.novaSenha}
+                        />
+                        <Input
+                            label="Confirmar Nova Senha"
+                            type="password"
+                            value={confirmarSenha}
+                            onChange={(e) => setConfirmarSenha(e.target.value)}
+                            error={errosSenha.confirmarSenha}
+                        />
+                        {errosSenha.geral && <p className="text-danger text-sm">{errosSenha.geral}</p>}
+                        {sucessoSenha && <p className="text-elemento-natureza text-sm">{sucessoSenha}</p>}
 
-                    <Botao tipo="submit" desabilitado={senhaMutation.isPending}>
-                        {senhaMutation.isPending ? 'Alterando...' : 'Alterar Senha'}
-                    </Botao>
-                </form>
-            </section>
+                        <Botao tipo="submit" desabilitado={senhaMutation.isPending}>
+                            {senhaMutation.isPending ? 'Alterando...' : 'Alterar Senha'}
+                        </Botao>
+                    </form>
+                </section>
 
-            {/* Deletar */}
-            <section className="bg-surface rounded-xl p-6 border border-danger/20">
-                <h2 className="font-bold text-xl text-danger mb-4">
-                    Deletar Conta
-                </h2>
-                <p className="text-text-muted text-sm mb-4">
-                    Essa ação é irreversível. Todos os seus dados serão perdidos.
-                </p>
+                {/* Deletar */}
+                <section className="bg-surface rounded-xl p-6 border border-danger/20">
+                    <h2 className="font-bold text-xl text-danger mb-4">
+                        Deletar Conta
+                    </h2>
+                    <p className="text-text-muted text-sm mb-4">
+                        Essa ação é irreversível. Todos os seus dados serão perdidos.
+                    </p>
 
-                <form onSubmit={handleDeletarConta} className="flex flex-col gap-4">
-                    <Input
-                        label="Confirme com sua senha"
-                        type="password"
-                        value={senhaDeletar}
-                        onChange={(e) => setSenhaDeletar(e.target.value)}
-                        error={erroDeletar}
-                    />
+                    <form onSubmit={handleDeletarConta} className="flex flex-col gap-4">
+                        <Input
+                            label="Confirme com sua senha"
+                            type="password"
+                            value={senhaDeletar}
+                            onChange={(e) => setSenhaDeletar(e.target.value)}
+                            error={erroDeletar}
+                        />
 
-                    <Botao
-                        variante="perigo"
-                        tipo="submit"
-                        desabilitado={deletarMutation.isPending}
-                    >
-                        {deletarMutation.isPending ? 'Deletando...' : 'Deletar Minha Conta'}
-                    </Botao>
-                </form>
-            </section>
-        </div>
+                        <Botao
+                            variante="perigo"
+                            tipo="submit"
+                            desabilitado={deletarMutation.isPending}
+                        >
+                            {deletarMutation.isPending ? 'Deletando...' : 'Deletar Minha Conta'}
+                        </Botao>
+                    </form>
+                </section>
+            </div>
+        </PageContainer>
     );
 }
