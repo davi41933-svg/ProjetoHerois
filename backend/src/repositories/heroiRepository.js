@@ -110,6 +110,6 @@ export const heroiRepository = {
             WHERE id = ?
             `, [id]);
 
-        return resultado;
+        return resultado[0] || null;
     }
 };
