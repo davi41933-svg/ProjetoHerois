@@ -45,10 +45,10 @@ export const configuracaoService = {
         // Easter egg
         let caixaAtual = usuario.caixa_atual;
 
-        if (nome === 'REAL_DEV') {
+        if (nome === 'MARLOS') {
             caixaAtual = 'dev';
             await usuarioRepository.atualizarCaixa(usuarioId, 'dev');
-        } else if (usuario.caixa_atual === 'dev' && nome !== 'REAL_DEV') {
+        } else if (usuario.caixa_atual === 'dev' && nome !== 'MARLOS') {
             caixaAtual = 'madeira';
             await usuarioRepository.atualizarCaixa(usuarioId, 'madeira');
         }
@@ -57,7 +57,7 @@ export const configuracaoService = {
             nome,
             email,
             caixa_atual: caixaAtual,
-            easterEgg: nome === 'REAL_DEV'
+            easterEgg: nome === 'MARLOS'
         };
     },
 

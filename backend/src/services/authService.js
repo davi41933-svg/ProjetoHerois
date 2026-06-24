@@ -74,7 +74,7 @@ export const authService = {
         await usuarioRepository.atualizarNome(usuarioId, nome);
 
         // Easter egg
-        if (nome === 'REAL_DEV') {
+        if (nome === 'MARLOS') {
             await usuarioRepository.atualizarCaixa(usuarioId, 'dev');
             return { nome, caixa_atual: 'dev', easterEgg: true };
         }
