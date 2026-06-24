@@ -93,7 +93,7 @@ export const heroiService = {
         const quantidade = 1 + boostNivel;
 
         // Buscar heróis aleatórios da cache
-        const heroisApi = await heroiRepository.buscarHeroisAleatorios(quantidade);
+        const heroisApi = await heroiRepository.buscarHeroisAleatorio(quantidade);
 
         if (heroisApi.length === 0) {
             throw criarErro(500, 'Nenhum herói disponível no cache.');

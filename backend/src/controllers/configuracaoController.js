@@ -4,7 +4,7 @@ export const configuracaoController = {
 
     async buscarPerfil(req, res) {
         try {
-            const resultado = await configService.buscarPerfil(req.usuario.id);
+            const resultado = await configuracaoService.buscarPerfil(req.usuario.id);
             return res.status(200).json(resultado);
         } catch (error) {
             return res.status(error.status || 500)
@@ -14,7 +14,7 @@ export const configuracaoController = {
 
     async atualizarNomeEmail(req, res) {
         try {
-            const resultado = await configService.atualizarNomeEmail(req.usuario.id, req.body);
+            const resultado = await configuracaoService.atualizarNomeEmail(req.usuario.id, req.body);
             return res.status(200).json(resultado);
         } catch (error) {
             return res.status(error.status || 500)
@@ -24,7 +24,7 @@ export const configuracaoController = {
 
     async atualizarSenha(req, res) {
         try {
-            const resultado = await configService.atualizarSenha(req.usuario.id, req.body);
+            const resultado = await configuracaoService.atualizarSenha(req.usuario.id, req.body);
             return res.status(200).json(resultado);
         } catch (error) {
             return res.status(error.status || 500)
@@ -34,7 +34,7 @@ export const configuracaoController = {
 
     async deletarConta(req, res) {
         try {
-            const resultado = await configService.deletarConta(req.usuario.id, req.body);
+            const resultado = await configuracaoService.deletarConta(req.usuario.id, req.body);
             return res.status(200).json(resultado);
         } catch (error) {
             return res.status(error.status || 500)

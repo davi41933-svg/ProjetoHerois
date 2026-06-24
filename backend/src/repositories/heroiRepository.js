@@ -29,7 +29,7 @@ export const heroiRepository = {
             INSERT INTO usuario_herois
             (usuario_id, heroi_api_id, nome_heroi, imagem_heroi, elemento, classe, raridade, poder_base)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-            `[usuarioId, heroiApiId, nomeHeroi, imagemHeroi, elemento, classe, raridade ,poderBase]);
+            `, [usuarioId, heroiApiId, nomeHeroi, imagemHeroi, elemento, classe, raridade ,poderBase]);
 
         return resultado.insertId;
     },

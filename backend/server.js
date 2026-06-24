@@ -20,10 +20,13 @@ app.use('/guilda', guildaRoutes);
 app.use('/missao', missaoRoutes);
 app.use('/loja', lojaRoutes);
 app.use('/configuracao', configuracaoRoutes);
+// app.get('/teste', (req, res) => {
+//     return res.json({ mensagem: "ok" })
+// })
 
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`✅ Servidor rodando na porta ${PORT}`);
 })

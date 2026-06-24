@@ -42,7 +42,7 @@ export const usuarioRepository = {
         return resultado.affectedRows;
     },
 
-    async atualizarXpNivel(id, xp, nivel) {
+    async atualizarXpENivel(id, xp, nivel) {
         const [resultado] = await pool.query(`
             UPDATE usuarios
             SET xp = ?, nivel = ?
