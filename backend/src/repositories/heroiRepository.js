@@ -91,7 +91,7 @@ export const heroiRepository = {
 
     // Buscar nível do boost de um tipo
     async buscarNivelBoost(usuarioId, tipoBoost) {
-        const [rows] = await pool.query(`
+        const [resultado] = await pool.query(`
             SELECT ui.nivel_boost
             FROM usuario_itens ui
             JOIN itens_loja il ON ui.item_id = il.id
@@ -100,6 +100,16 @@ export const heroiRepository = {
             LIMIT 1
         `, [usuarioId, tipoBoost]);
 
-        return rows[0]?.nivel_boost || 0;
+        return resultado[0]?.nivel_boost || 0;
+    },
+
+    async buscarHeroiPorId(id) {
+        const [resultado] = await pool.query(`
+            SELECT * 
+            FROM usuario_herois
+            WHERE id = ?
+            `, [id]);
+
+        return resultado;
     }
 };

@@ -88,6 +88,13 @@ export default function Dashboard() {
                         <p className="text-text-muted text-sm">Itens e boosts</p>
                     </div>
                 </Link>
+                <Link to="/guildas">
+                    <div className="bg-surface rounded-xl p-5 border border-text-muted/10 hover:border-accent/30 transition-colors">
+                        <span className="text-3xl">🏰</span>
+                        <h3 className="font-bold text-text-primary mt-2">Guildas</h3>
+                        <p className="text-text-muted text-sm">Organizar heróis</p>
+                    </div>
+                </Link>
             </div>
 
             {/* Heróis recentes */}

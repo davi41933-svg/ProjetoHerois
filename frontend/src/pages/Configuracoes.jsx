@@ -29,8 +29,11 @@ export default function Configuracoes() {
     const nomeEmailMutation = useMutation({
         mutationFn: () => configuracaoService.atualizarNomeEmail({ nome, email }),
         onSuccess: (data) => {
-            atualizarUsuario({ nome: data.nome, email: data.email });
-            if (data.caixa_atual) atualizarUsuario({ caixa_atual: data.caixa_atual });
+            atualizarUsuario({
+                nome: data.nome,
+                email: data.email,
+                ...(data.caixa_atual && { caixa_atual: data.caixa_atual })
+            });
             setErrosPerfil({});
             setSucessoPerfil('Dados atualizados com sucesso!');
             setTimeout(() => setSucessoPerfil(''), 3000);
@@ -47,8 +50,8 @@ export default function Configuracoes() {
             setNovaSenha('');
             setConfirmarSenha('');
             setErrosSenha({});
-            setSucessoSenha('Senha atualizada com sucesso!');
-            setTimeout(() => setSucessoSenha(''), 3000);
+            setSucessoSenha('Senha alterada! Faça login novamente.');
+            setTimeout(() => logout(), 2000);
         },
         onError: (error) => {
             setErrosSenha({ geral: error.response?.data?.mensagem || 'Erro ao atualizar senha' });

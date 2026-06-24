@@ -9,6 +9,7 @@ import TodosHerois from '../pages/TodosHerois';
 import Missoes from '../pages/Missoes';
 import Loja from '../pages/Loja';
 import Configuracoes from '../pages/Configuracoes';
+import Guildas from '../pages/Guildas';
 
 export default function AppRoutes() {
     return (
@@ -25,6 +26,7 @@ export default function AppRoutes() {
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="galeria" element={<Galeria />} />
                 <Route path="herois" element={<TodosHerois />} />
+                <Route path="guildas" element={<Guildas />} />
                 <Route path="missoes" element={<Missoes />} />
                 <Route path="loja" element={<Loja />} />
                 <Route path="configuracoes" element={<Configuracoes />} />

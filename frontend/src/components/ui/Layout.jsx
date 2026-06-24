@@ -5,6 +5,7 @@ const links = [
     { to: '/dashboard', label: 'Dashboard' },
     { to: '/galeria', label: 'Galeria' },
     { to: '/herois', label: 'Heróis' },
+    { to: '/guildas', label: 'Guildas' },
     { to: '/missoes', label: 'Missões' },
     { to: '/loja', label: 'Loja' },
     { to: '/configuracoes', label: 'Config' }
