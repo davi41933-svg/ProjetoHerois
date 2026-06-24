@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
-import configService from '../services/configService';
+import configuracaoService from '../services/configuracaoService';
 import useAuth from '../hooks/useAuth';
 import Input from '../components/ui/Input';
 import Botao from '../components/ui/Botao';
-import { nomeEmailSchema, senhaSchema } from '../schemas/configSchema';
+import { nomeEmailSchema, senhaSchema } from '../schemas/configuracaoSchema';
 
 export default function Configuracoes() {
     const { usuario, atualizarUsuario, logout } = useAuth();
@@ -27,7 +27,7 @@ export default function Configuracoes() {
     const [erroDeletar, setErroDeletar] = useState('');
 
     const nomeEmailMutation = useMutation({
-        mutationFn: () => configService.atualizarNomeEmail({ nome, email }),
+        mutationFn: () => configuracaoService.atualizarNomeEmail({ nome, email }),
         onSuccess: (data) => {
             atualizarUsuario({ nome: data.nome, email: data.email });
             if (data.caixa_atual) atualizarUsuario({ caixa_atual: data.caixa_atual });
@@ -41,7 +41,7 @@ export default function Configuracoes() {
     });
 
     const senhaMutation = useMutation({
-        mutationFn: () => configService.atualizarSenha({ senhaAtual, novaSenha, confirmarSenha }),
+        mutationFn: () => configuracaoService.atualizarSenha({ senhaAtual, novaSenha, confirmarSenha }),
         onSuccess: () => {
             setSenhaAtual('');
             setNovaSenha('');
@@ -56,7 +56,7 @@ export default function Configuracoes() {
     });
 
     const deletarMutation = useMutation({
-        mutationFn: () => configService.deletarConta(senhaDeletar),
+        mutationFn: () => configuracaoService.deletarConta(senhaDeletar),
         onSuccess: () => logout(),
         onError: (error) => {
             setErroDeletar(error.response?.data?.mensagem || 'Erro ao deletar conta');
