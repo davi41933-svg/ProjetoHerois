@@ -22,9 +22,9 @@ app.use('/guilda', guildaRoutes);
 app.use('/missao', missaoRoutes);
 app.use('/loja', lojaRoutes);
 app.use('/configuracao', configuracaoRoutes);
-// app.get('/teste', (req, res) => {
-//     return res.json({ mensagem: "ok" })
-// })
+app.get('/teste', (req, res) => {
+    return res.json({ mensagem: "ok" })
+})
 
 
 
