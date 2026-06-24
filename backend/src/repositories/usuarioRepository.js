@@ -59,7 +59,38 @@ export const usuarioRepository = {
             SET caixa_atual = ?
             WHERE id = ?
         `, [caixaAtual, id]);
-        
+
+        return resultado.affectedRows;
+    },
+
+        // Adicionar dentro do objeto usuarioRepository
+
+    async atualizarNomeEmail(id, nome, email) {
+        const [resultado] = await pool.query(`
+            UPDATE usuarios
+            SET nome = ?, email = ?
+            WHERE id = ?
+        `, [nome, email, id]);
+
+        return resultado.affectedRows;
+    },
+
+    async atualizarSenha(id, novaSenha) {
+        const [resultado] = await pool.query(`
+            UPDATE usuarios
+            SET senha = ?
+            WHERE id = ?
+        `, [novaSenha, id]);
+
+        return resultado.affectedRows;
+    },
+
+    async deletarUsuario(id) {
+        const [resultado] = await pool.query(`
+            DELETE FROM usuarios
+            WHERE id = ?
+        `, [id]);
+
         return resultado.affectedRows;
     }
 }

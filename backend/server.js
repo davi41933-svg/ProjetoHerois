@@ -5,6 +5,7 @@ import heroiRoutes from './src/routes/heroiRoutes.js';
 import guildaRoutes from './src/routes/guildaRoutes.js';
 import missaoRoutes from './src/routes/missaoRoutes.js';
 import lojaRoutes from './src/routes/lojaRoutes.js';
+import configuracaoRoutes from './src/routes/configuracaoRoutes.js';
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use('/heroi', heroiRoutes);
 app.use('/guilda', guildaRoutes);
 app.use('/missao', missaoRoutes);
 app.use('/loja', lojaRoutes);
+app.use('/configuracao', configuracaoRoutes);
 
 
 
